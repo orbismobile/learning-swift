@@ -8,7 +8,11 @@ print("myImplictVariable", myImplictVariable);
 var myExplicitVariable: Float = 30;
 print("myExplicitVariable", myExplicitVariable);
 
-//using let :O
+var aName: String;
+aName = "cool!"
+print("aName", aName);
+
+//using let :O, lets are constants
 let singleLetString = "awesome!";
 let explicitLetString: String = "awesome again!";
 
@@ -20,10 +24,17 @@ let afterAssignValue: String;
 afterAssignValue = "hi!";
 print("afterAssignValue", afterAssignValue);
 
-//You need to declare a Optional syntax datatype, you can see in datatypes.swift file
+/*
+IMPORTANT!
+Mades an error: immutable value 'afterAssignValue' may only be initialized once
+afterAssignValue = "hi again!";
+print("afterAssignValue", afterAssignValue);
+*/
 
+//You need to declare a Optional syntax datatype, you can see in datatypes.swift file
 let label = "The width is ";
 let width = 94;
+// Apply String reserved word for parse
 let widthLabel = label + String(width);
 
 print("widthLabel \(widthLabel)");
