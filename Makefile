@@ -14,7 +14,7 @@ run_chapter1: run_1.1 run_1.2 run_1.3 run_1.4 run_1.5
 1.4:
 	./compile-swift-file.sh chapter1/datastructure.swift -o chapter1/compiled-datastructure
 1.5:
-	./compile-swift-file.sh chapter1/flowcontrol.swift -o chapter1/compiled-flowcontrol
+	./compile-swift-file.sh chapter1/flowcontrol.swift -v -o chapter1/compiled-flowcontrol
 
 # for run into images
 run_1.1:

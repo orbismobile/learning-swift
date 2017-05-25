@@ -1,5 +1,8 @@
-/*needed for use built-in rand function*/
+/*needed for use built-in random function*/
 import Glibc;
+
+/*For understand String methods like hasSuffix*/
+import Foundation;
 
 // conditionals
 //let randomNumber = _swift_stdlib_cxx11_mt19937_uniform(10);
@@ -40,5 +43,7 @@ let fruit = "watermellon";
 switch(fruit){
     case let x where x.hasSuffix("mellon"):
         print ("has suffix \(fruit)");
+    default:
+        print ("please put a default case in every switch");
 }
 print("/* END CONTROL CASE :*/");
