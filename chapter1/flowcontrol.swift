@@ -2,7 +2,7 @@
 import Glibc;
 
 /*For understand String methods like hasSuffix*/
-import Foundation;
+//import Foundation;
 
 // conditionals
 //let randomNumber = _swift_stdlib_cxx11_mt19937_uniform(10);
@@ -17,6 +17,15 @@ if isTrue {
     print("A Single condition");
 }
 print("/* END SINGLE CONDITIONAL :*/");
+
+print("/* SINGLE CONDITIONAL TERNARY:*/");
+let isTrueTernary: Bool;
+if 9 > 1 {
+    isTrueTernary = true;
+    print("A Single condition \(isTrueTernary)");
+}
+print("/* END SINGLE CONDITIONAL TERNARY:*/");
+
 
 print("/* SINGLE NUMBER CONDITIONAL :*/");
 let numToValidate = 10;
@@ -38,7 +47,7 @@ switch(position){
     default:
         print("<-> \(position)");
 }
-
+/*
 let fruit = "watermellon";
 switch(fruit){
     case let x where x.hasSuffix("mellon"):
@@ -46,4 +55,4 @@ switch(fruit){
     default:
         print ("please put a default case in every switch");
 }
-print("/* END CONTROL CASE :*/");
+print("/* END CONTROL CASE :*/");*/
