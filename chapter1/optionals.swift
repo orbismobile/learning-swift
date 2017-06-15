@@ -36,14 +36,13 @@ print("with nil->errorCode=\(String(describing:errorCode))")
 print("============")
 print("Unwrapping optionals")
 print("============")
-var result:Int? = 30
-print("->result=\(String(describing:result))")
+var resultToUnwrap:Int? = 30
+print("->result=\(String(describing:resultToUnwrap))")
 /*
   Trying to execute this sentence:
   print(result + 1)
   Mades and error for unwrap the result optional
 */
-
 
 print("============")
 print("force unwrapping")
@@ -76,10 +75,39 @@ if result != nil {
 print("============")
 print("optional binding")
 print("============")
+
+var optionalAuthorName: String? = "foo le' optionalle"
+var optionalAuthorAge: Int? = 12
+
 if let unwrappedResult = result {
   print("result :D \(unwrappedResult)");
 } else {
-  print("result :\");
+  print("result :(");
 }
 
+//And binding many values
+if let unwrappedAuthorName = optionalAuthorName,
+   let unwrappedAuthorAge  = optionalAuthorAge {
+    print("The author is \(unwrappedAuthorName) who is \(unwrappedAuthorAge) years old.");
+} else {
+    print("No author or age :/");
+}
+
+//And apply some new conditions
+//Maybe needs to validate after check if is optional or not
+if let unwrappedAuthorName = optionalAuthorName,
+   let unwrappedAuthorAge  = optionalAuthorAge,
+   unwrappedAuthorAge > 20 {
+    print("The author is \(unwrappedAuthorName) who is \(unwrappedAuthorAge) years old.");
+} else {
+    print("No author or age :/");
+}
+
+/*nil coalesing*/
+/*defining a optional int*/
+var optionalIntForNilCoalesing: Int? = nil
+/*This is the sintax of nil coalesing, using ?? */
+var mustHaveResult = optionalIntForNilCoalesing ?? 5
+/*The nil coalesing is a way to unwrap a optional, in case of nil, you'll use a default value */
+print(mustHaveResult)
 
