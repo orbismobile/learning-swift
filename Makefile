@@ -1,9 +1,12 @@
 # Makefile
 
-all: chapter1
+all: chapter1 chapter2
 
 chapter1: 1.1 1.2 1.3 1.4 1.5 1.6 1.7
+chapter2: 2.1 2.2 2.3
+
 run_chapter1: run_1.1 run_1.2 run_1.3 run_1.4 run_1.5 run_1.6 run_1.7
+run_chapter2: run_2.1 run_2.2 run_2.3
 
 1.1:
 	./compile-swift-file.sh chapter1/hi.swift -o chapter1/compiled-hi
@@ -19,6 +22,12 @@ run_chapter1: run_1.1 run_1.2 run_1.3 run_1.4 run_1.5 run_1.6 run_1.7
 	./compile-swift-file.sh chapter1/optionals.swift -v -o chapter1/compiled-optionals
 1.7:
 	./compile-swift-file.sh chapter1/guard.swift -v -o chapter1/compiled-guard
+2.1:
+	./compile-swift-file.sh chapter2/arrays.swift -o chapter2/compiled-arrays
+2.2:
+	./compile-swift-file.sh chapter2/dictionaries.swift -v -o chapter2/compiled-dictionaries
+2.3:
+	./compile-swift-file.sh chapter2/collection-iterations.swift -v -o chapter2/collection-iterations
 
 # for run into images
 run_1.1:
@@ -36,5 +45,13 @@ run_1.6:
 run_1.7:
 	./run-compiled-file.sh ./chapter1/compiled-guard
 
+run_2.1:
+	./run-compiled-file.sh ./chapter2/compiled-arrays
+run_2.2:
+	./run-compiled-file.sh ./chapter2/compiled-dictionaries
+run_2.3:
+	./run-compiled-file.sh ./chapter2/compiled-iterations
+
 clean:
 	rm -fr chapter1/compiled-*
+	rm -fr chapter2/compiled-*
