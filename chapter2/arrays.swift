@@ -32,3 +32,20 @@ print(String(describing: allZeros));
 // Create an inmutable array
 let vowels = ["a", "e", "i", "o", "u"]
 print(String(describing: vowels));
+
+//learn native array methods and properties
+print("The array vowels is empty? : \(vowels.isEmpty)");
+print("The array vowels has a total of? : \(vowels.count) items");
+
+//The "first" and "last" properties of an array are optvowels.firstional type, so:
+
+guard let firstValue:String = vowels.first else {
+  return "no way no first";
+}
+print("The first element of array vowels? : \(firstValue)");
+
+guard let lastValue: String = vowels.first else {
+  return "no last :/";
+}
+print("The last element of array vowels? : \(lastValue)");
+
