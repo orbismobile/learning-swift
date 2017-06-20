@@ -50,7 +50,7 @@ run_2.1:
 run_2.2:
 	./run-compiled-file.sh ./chapter2/compiled-dictionaries
 run_2.3:
-	./run-compiled-file.sh ./chapter2/compiled-iterations
+	./run-compiled-file.sh ./chapter2/compiled-collection-iterations
 
 clean:
 	rm -fr chapter1/compiled-*
