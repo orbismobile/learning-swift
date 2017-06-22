@@ -4,9 +4,11 @@ all: chapter1 chapter2
 
 chapter1: 1.1 1.2 1.3 1.4 1.5 1.6 1.7
 chapter2: 2.1 2.2 2.3
+chapter3: 3.1 3.2
 
 run_chapter1: run_1.1 run_1.2 run_1.3 run_1.4 run_1.5 run_1.6 run_1.7
 run_chapter2: run_2.1 run_2.2 run_2.3
+run_chapter3: run_3.1 run_3.2
 
 1.1:
 	./compile-swift-file.sh chapter1/hi.swift -o chapter1/compiled-hi
@@ -27,7 +29,12 @@ run_chapter2: run_2.1 run_2.2 run_2.3
 2.2:
 	./compile-swift-file.sh chapter2/dictionaries.swift -v -o chapter2/compiled-dictionaries
 2.3:
-	./compile-swift-file.sh chapter2/collection-iterations.swift -v -o chapter2/collection-iterations
+	./compile-swift-file.sh chapter2/collection-iterations.swift -v -o chapter2/compiled-collection-iterations
+
+3.1:
+	./compile-swift-file.sh chapter3/structs.swift -v -o chapter3/compiled-structs
+3.2:
+	./compile-swift-file.sh chapter3/properties.swift -v -o chapter3/compiled-properties
 
 # for run into images
 run_1.1:
@@ -52,6 +59,12 @@ run_2.2:
 run_2.3:
 	./run-compiled-file.sh ./chapter2/compiled-collection-iterations
 
+run_3.1:
+	./run-compiled-file.sh ./chapter3/compiled-structs
+run_3.2:
+	./run-compiled-file.sh ./chapter3/compiled-properties
+
 clean:
 	rm -fr chapter1/compiled-*
 	rm -fr chapter2/compiled-*
+	rm -fr chapter3/compiled-*
