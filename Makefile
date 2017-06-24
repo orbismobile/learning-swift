@@ -8,7 +8,7 @@ chapter3: 3.1 3.2
 
 run_chapter1: run_1.1 run_1.2 run_1.3 run_1.4 run_1.5 run_1.6 run_1.7
 run_chapter2: run_2.1 run_2.2 run_2.3
-run_chapter3: run_3.1 run_3.2 run_3.3
+run_chapter3: run_3.1 run_3.2 run_3.3 run_3.4
 
 1.1:
 	./compile-swift-file.sh chapter1/hi.swift -o chapter1/compiled-hi
@@ -37,6 +37,8 @@ run_chapter3: run_3.1 run_3.2 run_3.3
 	./compile-swift-file.sh chapter3/properties.swift -v -o chapter3/compiled-properties
 3.3:
 	./compile-swift-file.sh chapter3/methods.swift -v -o chapter3/compiled-methods
+3.4:
+	./compile-swift-file.sh chapter3/classes.swift -v -o chapter3/compiled-classes
 
 # for run into images
 run_1.1:
@@ -67,6 +69,8 @@ run_3.2:
 	./run-compiled-file.sh ./chapter3/compiled-properties
 run_3.3:
 	./run-compiled-file.sh ./chapter3/compiled-methods
+run_3.4:
+	./run-compiled-file.sh ./chapter3/compiled-classes
 
 clean:
 	rm -fr chapter1/compiled-*
