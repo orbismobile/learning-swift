@@ -130,7 +130,7 @@ print("founded and updated: \(objFoo.name)")
 //Methods and mutability
 struct Experience {
     let companyName: String
-    let position: Double
+    let position: String
     let yearsOfWork: Double
 }
 
@@ -151,17 +151,17 @@ class Postulant {
 }
 
 let postulantA = Postulant(
-    firstName: "DemoA"
+    firstName: "DemoA",
     lastName: "barA"
 )
 let experienceA = Experience(
-    companyName : "ALPHA SAC"
-    position    : "Boss"
+    companyName : "ALPHA SAC",
+    position    : "Boss",
     yearsOfWork : 30
 )
 let experienceB = Experience(
-    companyName : "BETA SAC"
-    position    : "officer"
+    companyName : "BETA SAC",
+    position    : "officer",
     yearsOfWork : 10
 )
 postulantA.recordExperience(experienceA)
@@ -173,6 +173,21 @@ postulantA.recordExperience(experienceB)
     the value of a struct, instead of modifying the value, you're making
     a new value
 */
-/*Mutability and Constants*/
+/*Creating extensions*/
+/*The classes can be re-opened using the `extension` keyword*/
+extension Postulant {
+    var fullName: String {
+        return "\(firstName) \(lastname)"
+    } 
+}
+
+/*When use classes or strutcs?*/
+/*One strategy is thinking about VALUES vs REFERENCE SEMANTICS and use structs as VALUES and classes as OBJECTS*/
+/*An OBJECT is an instance of a reference type. Such instances have IDENTITY.
+  So, all OBJECT must be unique and no TWO or more OBJECTS are considered equal just because they hold the same state
+  This is why use the `===` to see if the OBJECTS are the truly same
+*/
+/*For example: A range is a value and should be implement as a struct, while a postulant is an object and should be
+implemented as a class. No two postulants should be considered equal just because they have the same name*/
 
 
