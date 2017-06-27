@@ -12,6 +12,11 @@ class Animal {
     final func getFullName() -> String {
         return "\(name) , \(category)"
     } 
+    deinit {
+        print("cleaned object with values-> category:\(category), name:\(name)")
+    }
+    //that method is useful for clean up other resources, save state to 
+    // a disk or execute any other logic you might want when an object goes out of scope
 }
 
 struct Island {
@@ -182,6 +187,93 @@ class cat: Animal {
 class Cat: Animal {
     var activities: [String]
     init (category: String, name: String, activities: [String]) {
-        super.init(category: category, name: name) //We need to declare that
+        self.activities = activities
+        super.init(
+            category: category, 
+            name: name
+        ) //We need to declare that
     }
 }
+
+//Understanding the class lifecycle
+/*The object is created in memory and it's stored on the heap.
+  An object on the heap is not automatically destroyed, 'cause the heap is simply a giant pool of memory
+  Without the utility of the call stack, there's no automatic way for a process to know that a piece of memory
+  will no longer be in use
+*/
+/*In swift, the mechanism for decide when to clean up unused objects on the heap
+  is known as `reference counting`. A mean, each object has a `reference count` that's
+  incremented for constant or variable with a reference to that object, and decremented each time
+  a reference is removed.*/
+//NOTE: `retain count` = `reference counting`
+/*When a reference count reaches zero, means the object is now abandoned, switf will clean up the object*/
+/*For ex:*/
+var someAnimal = Animal(
+    category: "unknowed",
+    name: "voidnum"
+) 
+//Reference Count is : 1 (someAnimal variable)
+
+var anotherSomeAnimal: Animal? = someAnimal 
+//Reference Count is : 2 (anotherSomeAnimal, someAnimal)
+
+var lotsOfAnimals = [someAnimal, someAnimal, anotherSomeAnimal, someAnimal]
+// Reference count: 6 (someAnimal, anotherSomeAnimal, 4 references in lotsOfAnimals)
+
+anotherSomeAnimal = nil 
+// Reference count: 5 (someAnimal, 4 references in lotsOfAnimals)
+
+lotsOfAnimals = []
+// Reference count: 1 (someAnimal)
+
+someAnimal = Animal(
+    category: "bar",
+    name: "foo"
+)
+//Reference count: 0 for the first variable someAnimal instance
+//variable someAnimal now references a new object
+/*The sentences above shows the ARC(Automatic Reference Count), a swift feature,
+  the swift compiler add these calls automatically at compile time*/
+
+/*Understanding `Retain cycles` and how to deal it*/
+class ClassA {
+    var dependsOn: ClassA?
+    deinit {
+        print("being deallocated!")
+    }
+}
+
+var objAA: ClassA? = ClassA()
+var objAB: ClassA? = ClassA()
+
+objAA?.dependsOn = objAB
+objAB?.dependsOn = objAA
+
+//And try to deallocte both..
+objAA = nil
+objAB = nil
+
+//Don't show in the compiled program the message defined in deinit method
+//May be using both variables and referenced themselves up, and never the ARC returns 0
+//That scenario causes a `memory leak` or a `retain cycle`
+
+//For prevent that problem, exists the keyword 'weak'
+class ClassB {
+    //By default, declaring a variable into a class is a `strong reference`
+    //If define the `weak` keyword, causes the variable `dependsOn` isn't `strong reference` and 
+    //is released of ARC, it automatically becomes a nil, and needs to declare with optional type 
+    weak var dependsOn: ClassB?
+    deinit {
+        print("being deallocated in class B!")
+    }
+}
+
+var objBA: ClassB? = ClassB()
+var objBB: ClassB? = ClassB()
+
+objBA?.dependsOn = objBB
+objBB?.dependsOn = objBA
+
+//trying again, to deallocte both..
+objBA = nil
+objBB = nil
