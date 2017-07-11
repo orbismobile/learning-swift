@@ -2,7 +2,7 @@
 
 all: chapter1 chapter2
 
-chapter1: 1.1 1.2 1.3 1.4 1.5 1.6 1.7
+chapter1: 1.1 1.2 1.3 1.4 1.5 1.6 1.7 1.8
 chapter2: 2.1 2.2 2.3
 chapter3: 3.1 3.2 3.3 3.4 3.5
 
@@ -24,6 +24,9 @@ run_chapter3: run_3.1 run_3.2 run_3.3 run_3.4 run_3.5
 	./compile-swift-file.sh chapter1/optionals.swift -v -o chapter1/compiled-optionals
 1.7:
 	./compile-swift-file.sh chapter1/guard.swift -v -o chapter1/compiled-guard
+1.8:
+	./compile-swift-file.sh chapter1/functions.swift -v -o chapter1/compiled-functions
+
 2.1:
 	./compile-swift-file.sh chapter2/arrays.swift -o chapter2/compiled-arrays
 2.2:
@@ -57,6 +60,8 @@ run_1.6:
 	./run-compiled-file.sh ./chapter1/compiled-optionals
 run_1.7:
 	./run-compiled-file.sh ./chapter1/compiled-guard
+run_1.8:
+	./run-compiled-file.sh ./chapter1/compiled-functions
 
 run_2.1:
 	./run-compiled-file.sh ./chapter2/compiled-arrays
